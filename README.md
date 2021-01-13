@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+# Enye - Phase 1 Assignment
+## [Phase 1.1: Front-end](https://www.notion.so/Phase-1-1-Front-end-e78495dcf1d44496bfe788e85f2bea7e)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+### Purpose
 
-In the project directory, you can run:
+The purpose is to gauge your understanding of working with JSON data with various RESTful APIs. In this challenge, we provide a sample API with a single endpoint and ask you to write some Javascript to request data from the API and transform the response.
 
-### `npm start`
+### Records API
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The provided API below returns a list of profiles with information surrounding e-commerce transaction details.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```bash
+https://api.enye.tech/v1/challenge/records
 
-### `npm test`
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+API response schema
 
-### `npm run build`
+```json
+{
+    "records": {
+        "profiles": [{
+            "FirstName": "",
+            "LastName": "",
+            "Gender": "",
+            "Latitude": "",
+            "Longitude": "",
+            "CreditCardNumber": "",
+            "CreditCardType": "",
+            "Email": "",
+            "DomainName": "",
+            "PhoneNumber": "",
+            "MacAddress": "",
+            "URL": "",
+            "UserName": "",
+            "LastLogin": "",
+            "PaymentMethod": ""
+        }, ...]
+    },
+    "status": "",
+    "size": ""
+}
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Required Technology
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- [React JS](https://reactjs.org/tutorial/tutorial.html)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Tasks
 
-### `npm run eject`
+1. Using the Profiles API, create a UI that presents the information intuitively and beautifully
+2. Only 20 profiles **must** be listed on a page, so pagination is needed 
+3. Your application **must** incorporate two (2) filters to dynamically present the information (i.e. filter by gender, payment method, credit card type, etc.)
+4. Your application **must** include a search bar to search for a specific patient
+5. Your application front-end **must** be written using ReactJS
+6. The application **must** be deployed to the web
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Notes
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+User experience is very important, so be sure to keep the end-users in mind. The more usable, accessible, intuitive, and beautiful your frontend design the better you will be scored.
