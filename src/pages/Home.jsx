@@ -30,6 +30,7 @@ const Home = () => {
       </Pane>
     );
   }
+  // eslint-disable-next-line array-callback-return
   const filteredProfiles = profiles.filter((profile) => {
     if (searchTerm.trim() === " ") {
       return profile;
