@@ -1,9 +1,8 @@
 import {
   Avatar,
   Card,
-  CreditCardIcon,
   Heading,
-  LocateIcon,
+  Link,
   PhoneIcon,
   Tab,
   TabNavigation,
@@ -39,10 +38,10 @@ const Profile = ({ profile }) => {
             <Text size={400}>@{profile.UserName}</Text>
             <Text size={300}>{profile.Gender}</Text>
             <Text display="flex" alignItems="center">
-              <EnvelopeIcon /> {profile.Email}
+              <EnvelopeIcon marginRight={5} /> {profile.Email}
             </Text>
             <Text display="flex" alignItems="center">
-              <PhoneIcon /> {profile.PhoneNumber}
+              <PhoneIcon marginRight={5}/> {profile.PhoneNumber}
             </Text>
           </Pane>
         </Pane>
@@ -70,16 +69,10 @@ const Profile = ({ profile }) => {
             display={selectedIndex === 0 ? "flex" : "none"}
             flexDirection="column"
           >
-            <Heading>Payment Details</Heading>
-            <Text>
-              <CreditCardIcon /> Credit Card Number: {profile.CreditCardNumber}
-            </Text>
-            <Text>
-              <CreditCardIcon /> Credit Card Type: {profile.CreditCardType}
-            </Text>
-            <Text>
-              <CreditCardIcon /> Payment Method: {profile.PaymentMethod}
-            </Text>
+            <Heading paddingY={5}>Payment Details</Heading>
+            <Text>Credit Card Number: {profile.CreditCardNumber}</Text>
+            <Text>Credit Card Type: {profile.CreditCardType}</Text>
+            <Text>Payment Method: {profile.PaymentMethod}</Text>
           </Pane>
         </Pane>
 
@@ -92,14 +85,14 @@ const Profile = ({ profile }) => {
             flexDirection="column"
           >
             <Pane display="flex" flexDirection="column">
-              <Heading padding={5} borderWidth={1} border="default">
+              <Heading paddingY={5}>
                 Location Details
               </Heading>
               <Text>
-                <LocateIcon /> Longitude: {profile.Longitude}
+                Longitude: {profile.Longitude}
               </Text>
               <Text>
-                <LocateIcon /> Latitude: {profile.Latitude}
+               Latitude: {profile.Latitude}
               </Text>
             </Pane>
           </Pane>
@@ -114,7 +107,12 @@ const Profile = ({ profile }) => {
             flexDirection="column"
           >
             <Pane display="flex" flexDirection="column">
-              <Text>URL: {profile.URL}</Text>
+            <Heading paddingY={5}>Other details</Heading>
+              <Text>Last Login: {profile.LastLogin}</Text>
+              <Text>
+
+              URL: <Link> {profile.URL}</Link>
+              </Text>
               <Text>Domain Name: {profile.DomainName}</Text>
               <Text>Mac Address: {profile.MacAddress}</Text>
             </Pane>
