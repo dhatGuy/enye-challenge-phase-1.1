@@ -9,6 +9,7 @@ import {
   TabNavigation,
 } from "evergreen-ui";
 import React, { useState } from "react";
+import "./Profile.css";
 import { Pane, Text, EnvelopeIcon } from "evergreen-ui";
 
 const Profile = ({ profile }) => {
@@ -17,7 +18,15 @@ const Profile = ({ profile }) => {
 
   return (
     <>
-      <Card width={"100%"} border="default">
+      <Card
+        width={"95%"}
+        border="default"
+        boxSizing="border-box"
+        margin={10}
+        padding={10}
+        className="grid-div"
+        elevation={3}
+      >
         <Pane display="flex">
           <Avatar
             isSolid
@@ -28,19 +37,16 @@ const Profile = ({ profile }) => {
           <Pane display="flex" flexDirection="column">
             <Heading>{`${profile.FirstName} ${profile.LastName}`}</Heading>
             <Text size={400}>@{profile.UserName}</Text>
-            <Text size={300}>
-              {profile.Gender}
+            <Text size={300}>{profile.Gender}</Text>
+            <Text display="flex" alignItems="center">
+              <EnvelopeIcon /> {profile.Email}
             </Text>
-          <Text>
-            <EnvelopeIcon /> {profile.Email}
-          </Text>
-          <Text>
-            <PhoneIcon /> {profile.PhoneNumber}
-          </Text>
+            <Text display="flex" alignItems="center">
+              <PhoneIcon /> {profile.PhoneNumber}
+            </Text>
           </Pane>
         </Pane>
-        <Pane display="flex" flexDirection="column">
-        </Pane>
+        <Pane display="flex" flexDirection="column"></Pane>
 
         <TabNavigation marginBottom={16} flexBasis={240} marginRight={24}>
           {tabs.map((tab, index) => (

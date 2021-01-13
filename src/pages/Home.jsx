@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Profile from "../components/Profile";
 import SearchBar from "../components/SearchBar";
 import SelectBar from "../components/SelectBar";
+import "../components/Profile.css";
 
 const Home = () => {
   const [profiles, setProfiles] = useState(null);
@@ -29,22 +30,31 @@ const Home = () => {
       </Pane>
     );
   }
+  const filteredProfiles = profiles.filter((profile) => {
+    if (searchTerm.trim() === " ") {
+      return profile;
+    } else if (
+      profile.FirstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      profile.LastName.toLowerCase().includes(searchTerm.toLowerCase())
+    ) {
+      return profile;
+    }
+  });
+
   return (
     <Pane>
-
-    <Pane>
-      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      <SelectBar filterBy={filterBy} setFilterBy={setFilterBy} />
-      {profiles
-        .filter((profile) =>
-        profile[filterBy].toLowerCase().includes(searchTerm.toLowerCase())
-        )
-        .map((profile) => (
-          <Profile profile={profile} />
+      <Pane>
+        <Pane display="flex">
+          <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+          <SelectBar filterBy={filterBy} setFilterBy={setFilterBy} />
+        </Pane>
+        <Pane className="grid">
+          {filteredProfiles.map((profile) => (
+            <Profile profile={profile} />
           ))}
+        </Pane>
+      </Pane>
     </Pane>
-    
-          </Pane>
   );
 };
 
