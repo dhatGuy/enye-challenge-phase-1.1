@@ -31,7 +31,7 @@ const Profile = ({ profile }) => {
             isSolid
             marginX={10}
             name={`${profile.FirstName} ${profile.LastName}`}
-            size={80}
+            size={60}
           />
           <Pane display="flex" flexDirection="column">
             <Heading>{`${profile.FirstName} ${profile.LastName}`}</Heading>
