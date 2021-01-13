@@ -10,7 +10,7 @@ import ReactPaginate from "react-paginate";
 const Home = () => {
   const [profiles, setProfiles] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
-  const [filterBy, setFilterBy] = useState("FirstName");
+  const [filterBy, setFilterBy] = useState("None");
   const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
@@ -26,7 +26,43 @@ const Home = () => {
 
   const offset = currentPage * 20;
 
-  const pageCount = Math.ceil(profiles?.length / 20);
+  const filteredProfiles = profiles
+    // eslint-disable-next-line array-callback-return
+    ?.filter((profile) => {
+      if (filterBy === "None") {
+        if (
+          profile.FirstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          profile.LastName.toLowerCase().includes(searchTerm.toLowerCase())
+        ) {
+          return profile;
+        }
+      }
+      if (filterBy === "Male" || filterBy === "Female" || filterBy === "Prefer to skip") {
+        if (
+         (profile.FirstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          profile.LastName.toLowerCase().includes(searchTerm.toLowerCase())) && profile.Gender === filterBy
+        ) {
+          return profile;
+        }
+      }
+      if (filterBy === "cc" || filterBy === "money order" || filterBy === "check") {
+        if (
+          (profile.FirstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          profile.LastName.toLowerCase().includes(searchTerm.toLowerCase())) && profile.PaymentMethod === filterBy
+        ) {
+          return profile;
+        }
+      }
+      // if (filterBy === "None") {
+      //   if (
+      //     profile.FirstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      //     profile.LastName.toLowerCase().includes(searchTerm.toLowerCase())
+      //   ) {
+      //     return profile;
+      //   }
+      // }
+    });
+  const pageCount = Math.ceil(filteredProfiles?.length / 20);
 
   if (!profiles) {
     return (
@@ -40,25 +76,11 @@ const Home = () => {
       </Pane>
     );
   }
-  
-  const filteredProfiles = profiles
-    // .slice(offset, offset + 20)
-    // eslint-disable-next-line array-callback-return
-    .filter((profile) => {
-      if (searchTerm.trim() === " ") {
-        return profile;
-      } else if (
-        profile.FirstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        profile.LastName.toLowerCase().includes(searchTerm.toLowerCase())
-      ) {
-        return profile;
-      }
-    });
 
   return (
     <Pane>
       <Pane>
-        <Pane display="flex" justifyContent="center" alignItems="center">
+        <Pane display="flex" justifyContent="center">
           <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
           <SelectBar filterBy={filterBy} setFilterBy={setFilterBy} />
         </Pane>

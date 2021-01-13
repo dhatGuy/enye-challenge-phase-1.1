@@ -38,10 +38,12 @@ const Profile = ({ profile }) => {
             <Text size={400}>@{profile.UserName}</Text>
             <Text size={300}>{profile.Gender}</Text>
             <Text display="flex" alignItems="center">
-              <EnvelopeIcon marginRight={5} /> {profile.Email}
+              <EnvelopeIcon marginRight={5} />{" "}
+              <a href={`mailto:${profile.Email}`}>{profile.Email}</a>
             </Text>
             <Text display="flex" alignItems="center">
-              <PhoneIcon marginRight={5}/> {profile.PhoneNumber}
+              <PhoneIcon marginRight={5} />{" "}
+              <a href={`tel:+${profile.PhoneNumber}`}>{profile.PhoneNumber}</a>
             </Text>
           </Pane>
         </Pane>
@@ -85,15 +87,9 @@ const Profile = ({ profile }) => {
             flexDirection="column"
           >
             <Pane display="flex" flexDirection="column">
-              <Heading paddingY={5}>
-                Location Details
-              </Heading>
-              <Text>
-                Longitude: {profile.Longitude}
-              </Text>
-              <Text>
-               Latitude: {profile.Latitude}
-              </Text>
+              <Heading paddingY={5}>Location Details</Heading>
+              <Text>Longitude: {profile.Longitude}</Text>
+              <Text>Latitude: {profile.Latitude}</Text>
             </Pane>
           </Pane>
         </Pane>
@@ -107,11 +103,10 @@ const Profile = ({ profile }) => {
             flexDirection="column"
           >
             <Pane display="flex" flexDirection="column">
-            <Heading paddingY={5}>Other details</Heading>
+              <Heading paddingY={5}>Other details</Heading>
               <Text>Last Login: {profile.LastLogin}</Text>
               <Text>
-
-              URL: <Link> {profile.URL}</Link>
+                URL: <Link href={profile.URL}> {profile.URL}</Link>
               </Text>
               <Text>Domain Name: {profile.DomainName}</Text>
               <Text>Mac Address: {profile.MacAddress}</Text>
