@@ -1,4 +1,4 @@
-import { Pane, Spinner } from "evergreen-ui";
+import { Heading, Pane, Spinner } from "evergreen-ui";
 import React, { useEffect, useState } from "react";
 import Profile from "../components/Profile";
 import SearchBar from "../components/SearchBar";
@@ -37,30 +37,36 @@ const Home = () => {
           return profile;
         }
       }
-      if (filterBy === "Male" || filterBy === "Female" || filterBy === "Prefer to skip") {
-        if (
-         (profile.FirstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          profile.LastName.toLowerCase().includes(searchTerm.toLowerCase())) && profile.Gender === filterBy
-        ) {
-          return profile;
-        }
-      }
-      if (filterBy === "cc" || filterBy === "money order" || filterBy === "check") {
+      if (
+        filterBy === "Male" ||
+        filterBy === "Female" ||
+        filterBy === "Prefer to skip"
+      ) {
         if (
           (profile.FirstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          profile.LastName.toLowerCase().includes(searchTerm.toLowerCase())) && profile.PaymentMethod === filterBy
+            profile.LastName.toLowerCase().includes(
+              searchTerm.toLowerCase()
+            )) &&
+          profile.Gender === filterBy
         ) {
           return profile;
         }
       }
-      // if (filterBy === "None") {
-      //   if (
-      //     profile.FirstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      //     profile.LastName.toLowerCase().includes(searchTerm.toLowerCase())
-      //   ) {
-      //     return profile;
-      //   }
-      // }
+      if (
+        filterBy === "cc" ||
+        filterBy === "money order" ||
+        filterBy === "check"
+      ) {
+        if (
+          (profile.FirstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            profile.LastName.toLowerCase().includes(
+              searchTerm.toLowerCase()
+            )) &&
+          profile.PaymentMethod === filterBy
+        ) {
+          return profile;
+        }
+      }
     });
   const pageCount = Math.ceil(filteredProfiles?.length / 20);
 
@@ -79,8 +85,9 @@ const Home = () => {
 
   return (
     <Pane>
+      <Heading textAlign="center" size={900} marginY={20}>User Profiles</Heading>
       <Pane>
-        <Pane display="flex" justifyContent="center">
+        <Pane display="flex" flexDirection="column" justifyContent="" alignItems="center">
           <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
           <SelectBar filterBy={filterBy} setFilterBy={setFilterBy} />
         </Pane>
@@ -90,7 +97,7 @@ const Home = () => {
           ))}
         </Pane>
       </Pane>
-      <Pane display="flex" justifyContent="flex-end" marginRight={10}>
+      <Pane display="flex" justifyContent="flex-end" marginRight={10} marginBottom={10}>
         <ReactPaginate
           previousLabel={"←"}
           nextLabel={"→"}

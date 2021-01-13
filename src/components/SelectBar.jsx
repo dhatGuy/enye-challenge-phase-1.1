@@ -1,10 +1,10 @@
-import { Pane, Select } from "evergreen-ui";
+import { Pane, Select, Text } from "evergreen-ui";
 import React from "react";
 
 const SelectBar = ({filterBy, setFilterBy}) => {
   return (
     <Pane>
-
+      <Text marginRight={5}>Filter by</Text>
     <Select value={filterBy} onChange={(event) => setFilterBy(event.target.value)}>
       <option value="" disabled>Select an option</option>
       <option value="None" defaultValue>None</option>
@@ -19,9 +19,7 @@ const SelectBar = ({filterBy, setFilterBy}) => {
       <option value="check">Check</option>
       <option value="cc">CC</option>
       <option value="money order">Money Order</option>
-      </optgroup>
-      <optgroup label="CreditCardType">Credit Card Type</optgroup>
-      
+      </optgroup>      
     </Select>
     </Pane>
   );

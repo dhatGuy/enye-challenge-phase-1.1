@@ -39,11 +39,11 @@ const Profile = ({ profile }) => {
             <Text size={300}>{profile.Gender}</Text>
             <Text display="flex" alignItems="center">
               <EnvelopeIcon marginRight={5} />{" "}
-              <a href={`mailto:${profile.Email}`}>{profile.Email}</a>
+              <Link textDecoration="none" href={`mailto:${profile.Email}`}>{profile.Email}</Link>
             </Text>
             <Text display="flex" alignItems="center">
               <PhoneIcon marginRight={5} />{" "}
-              <a href={`tel:+${profile.PhoneNumber}`}>{profile.PhoneNumber}</a>
+              <Link textDecoration="none" href={`tel:+${profile.PhoneNumber}`}>{profile.PhoneNumber}</Link>
             </Text>
           </Pane>
         </Pane>
